@@ -1,10 +1,13 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+import os
 import pickle
 
-# Create flask app
-flask_app = Flask(__name__)
+if not os.path.exists("model.pkl"):
+    raise FileNotFoundError("❌ model.pkl not found. Please run train_model.py first.")
+
 model = pickle.load(open("model.pkl", "rb"))
+
 
 @flask_app.route("/")
 def Home():
