@@ -28,7 +28,7 @@ import numpy as np
 app = Flask(__name__)
 model = joblib.load('crop_model.pkl')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['GET', 'POST'])
 def predict():
     prediction = None
     try:
